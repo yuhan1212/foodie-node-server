@@ -3,15 +3,16 @@ module.exports = (app) => {
 
     const register = async (req, res) => {
         const credentials = req.body;
-        userService.findUserByUsername(credentials.username)
+        userService.findUserByEmail(credentials.email)
             .then((actualUser) => {
                 if(actualUser.length > 0) {
-                    res.send("0");
+                    res.sendStatus(409);
                 } else {
                     userService.register(credentials)
                         .then((newUser) => {
                             res.json(newUser);
-                        });
+                        })
+                        .catch(err => console.error(`register error: ${err}`));
                 }
             });
     }
@@ -24,7 +25,7 @@ module.exports = (app) => {
                 if (user) {
                     res.send(user);
                 } else {
-                    res.send("0");
+                    res.sendStatus(401);
                 }
             });
     }

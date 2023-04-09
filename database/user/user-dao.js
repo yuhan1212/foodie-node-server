@@ -9,7 +9,11 @@ const findUserByCredentials = (email, password) => {
 }
 
 const findUserByUsername = (username) => {
-    return userModel.find({username: username})
+    return userModel.find({username: username});
+}
+
+const findUserByEmail = (email) => {
+    return userModel.find({email: email});
 }
 
 const findUserById = (uid) => {
@@ -32,6 +36,7 @@ module.exports = {
     register,
     findUserByCredentials,
     findUserByUsername,
+    findUserByEmail,
     findUserById,
     findAllUsers,
     deleteUser,
