@@ -29,8 +29,8 @@ app.get('/', (req, res) => {
     res.send('Hello World!');
 });
 
-require("./services/user-service")(app);
-require("./services/favorite-service")(app)
+require("./controllers/user-controller")(app);
+require("./controllers/favorite-controller")(app)
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
