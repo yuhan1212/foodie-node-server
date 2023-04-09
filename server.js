@@ -8,7 +8,7 @@ const cors = require("cors");
 dotenv.config({path: './.env'});
 
 const DB_CONNECTION_URI = process.env.DB_CONNECTION_URI
-|| 'mongodb://127.0.0.1:27017/foodi\e';
+|| 'mongodb+srv://5610sp:3g41mnRh501uijHy@foodie.pw5nsle.mongodb.net/foodie?retryWrites=true&w=majority';
 
 mongoose.connect(DB_CONNECTION_URI);
 
