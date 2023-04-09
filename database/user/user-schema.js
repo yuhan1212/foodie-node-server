@@ -8,8 +8,7 @@ const userSchema = new mongoose.Schema({
     address: {type: Map, of: String},
     email: String,
     role: {type: String, enum: ["ADMIN", "USER"]},
-    avatar: String,
-    about: String
+    bio: String
 }, {collection: "users", timestamps: true})
 
 module.exports = userSchema
