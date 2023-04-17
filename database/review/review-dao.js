@@ -28,7 +28,12 @@ const deleteReview = (mealId, reviewId) => {
 }
 
 module.exports = {
-    findAllReviews, findReviewsByMeal, createReviewForMeal, findReviewById, findReviewsByUsername, deleteReview
+    findAllReviews,
+    findReviewsByMeal,
+    createReviewForMeal,
+    findReviewById,
+    findReviewsByUsername,
+    deleteReview
 }
 
 
