@@ -1,15 +1,15 @@
 module.exports = (app) => {
     const reviewService = require("../database/review/review-dao");
 
-    const createReviewForRecipe = (req, res) => {
+    const createReviewForMeal = (req, res) => {
         const review = req.body;
-        const recipeId = review.recipeId;
+        const mealId = review.mealId;
         const textArea = review.textArea;
         const username = review.username;
-        const recipeName = review.recipeName;
-        const recipeImg = review.recipeImg;
+        const mealName = review.mealName;
+        const mealImg = review.mealImg;
         const userId = review.userId;
-        reviewService.createReviewForRecipe(recipeId, textArea, username, recipeName, recipeImg, userId)
+        reviewService.createReviewForMeal(mealId, textArea, username, mealName, mealImg, userId)
             .then(review => res.json(review));
     };
 
@@ -28,18 +28,18 @@ module.exports = (app) => {
             });
     };
 
-    const findReviewsByRecipe = (req, res) => {
-        const recipeId = req.params['recipeId']
-        reviewService.findReviewsByRecipe(recipeId)
+    const findReviewsByMeal = (req, res) => {
+        const mealId = req.params['mealId']
+        reviewService.findReviewsByMeal(mealId)
             .then((reviews) => {
                 res.send(reviews)
             });
     };
 
     const deleteReview = (req, res) => {
-        const recipeId = req.params["recipeId"];
+        const mealId = req.params["mealId"];
         const reviewId = req.params["reviewId"];
-        reviewService.deleteReview(recipeId, reviewId)
+        reviewService.deleteReview(mealId, reviewId)
             .then(review => res.json(review));
     };
 
@@ -49,10 +49,10 @@ module.exports = (app) => {
             .then(reviews => res.json(reviews));
     };
 
-    app.post("/api/reviews/:recipeId", createReviewForRecipe);
+    app.post("/api/reviews/:mealId", createReviewForMeal);
     app.get("/api/reviews", findAllReviews);
     app.get('/api/internal/reviews/:reviewId', findReviewById);
-    app.get("/api/reviews/:recipeId", findReviewsByRecipe);
+    app.get("/api/reviews/:mealId", findReviewsByMeal);
     app.get("/api/reviews/username/:username", findReviewsByUsername);
-    app.delete("/api/reviews/:recipeId/:reviewId", deleteReview);
+    app.delete("/api/reviews/:mealId/:reviewId", deleteReview);
 };

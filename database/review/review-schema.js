@@ -1,6 +1,6 @@
 const mongoose = require("mongoose")
 const reviewSchema = new mongoose.Schema({
-    mealId: String,
+    mealId: Number,
     textArea: String,
     username: {
         type: mongoose.Schema.Types.String,

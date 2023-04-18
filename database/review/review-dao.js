@@ -1,12 +1,11 @@
-
 const reviewModel = require("./review-model")
 
 const findAllReviews = () => {
-    return reviewModel.find().exec()
+    return reviewModel.find()
 }
 
 const findReviewsByMeal = (mealId) => {
-    return reviewModel.find({mealId: mealId}).populate("users").exec()
+    return reviewModel.find({mealId: mealId})
 }
 
 const createReviewForMeal = (mealId, textArea, username, mealName, mealImg, userId) => {
