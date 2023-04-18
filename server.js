@@ -16,7 +16,7 @@ app.use(cors({credentials: true, origin: 'http://localhost:3000'}));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", req.headers.origin);
+    res.header("Access-Control-Allow-Origin", "*");
     res.header("Access-Control-Allow-Headers",
         "Origin, X-Requested-With, Content-Type, Accept");
     res.header("Access-Control-Allow-Methods",
@@ -31,6 +31,7 @@ app.get('/', (req, res) => {
 
 require("./controllers/user-controller")(app);
 require("./controllers/favorite-controller")(app)
+require("./controllers/dislike-controller")(app)
 require("./controllers/review-controller")(app)
 
 const port = process.env.PORT || 4000;
