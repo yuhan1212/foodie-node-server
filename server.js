@@ -1,5 +1,14 @@
 const express = require('express');
+const session = require('express-session');
 const app = express();
+app.use(
+    session({
+        secret: "any string",
+        resave: false,
+        saveUninitialized: true,
+    })
+);
+
 const bodyParser = require('body-parser');
 const dotenv = require('dotenv');
 const mongoose = require("mongoose");
