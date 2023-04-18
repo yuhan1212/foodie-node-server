@@ -31,6 +31,8 @@ app.get('/', (req, res) => {
 
 require("./controllers/user-controller")(app);
 require("./controllers/favorite-controller")(app)
+require("./controllers/dislike-controller")(app)
+require("./controllers/review-controller")(app)
 
 const port = process.env.PORT || 4000;
 app.listen(port, () => {
