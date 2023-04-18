@@ -32,7 +32,7 @@ module.exports = (app) => {
     const removeDislike = (req, res) => {
         const userId = req.body.userId;
         const recipeId = req.body.recipeId;
-        dislikeService.removeFavorite(userId, recipeId)
+        dislikeService.removeDislike(userId, recipeId)
             .then(dislike => res.json(dislike));
     }
 
@@ -43,9 +43,9 @@ module.exports = (app) => {
             });
     }
 
-    app.get('/api/favorite/:recipeId/:userId', isDislike);
-    app.get('/api/favorite/:userId', findDislikesByUserId);
-    app.post('/api/favorite', addDislike);
-    app.delete('/api/favorite', removeDislike);
-    app.get('/api/favorite', findAllDislikes);
+    app.get('/api/dislike/:recipeId/:userId', isDislike);
+    app.get('/api/dislike/:userId', findDislikesByUserId);
+    app.post('/api/dislike', addDislike);
+    app.delete('/api/dislike', removeDislike);
+    app.get('/api/dislike', findAllDislikes);
 }
